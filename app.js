@@ -2,7 +2,10 @@ require("dotenv").config({ path: ".env" });
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 const morgan = require("morgan");
+
+const index = require("./routes/api/index");
 const app = express();
 
 // Body parser middleware
@@ -28,6 +31,9 @@ mongoose
   });
 
 app.use(morgan("tiny"));
+
+// Use Routes
+app.use("/api/test", test);
 
 const port = process.env.PORT || 8080;
 
