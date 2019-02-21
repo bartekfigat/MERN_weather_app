@@ -11,5 +11,12 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Bartek",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.14"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
