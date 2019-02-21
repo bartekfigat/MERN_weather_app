@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const morgan = require("morgan");
 
-const index = require("./routes/api/index");
+const indexRoutes = require("./routes/api_back_end/index");
 const app = express();
 
 // Body parser middleware
@@ -33,7 +33,7 @@ mongoose
 app.use(morgan("tiny"));
 
 // Use Routes
-app.use("/api/test", test);
+app.use(indexRoutes);
 
 const port = process.env.PORT || 8080;
 
