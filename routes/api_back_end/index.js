@@ -6,7 +6,7 @@ const fetch = require("node-fetch");
 
 const clientID = process.env.clientId;
 
-const urlUnsplash = `https://api.unsplash.com/search/photos/?page=1&per_page=6&query=warsaw&client_id=${clientID}`;
+const urlUnsplash = `https://api.unsplash.com/search/photos/?page=1&per_page=6&orientation=portrait&query=warsaw&client_id=${clientID}`;
 
 router.get("/test", (req, res) =>
   //unsplash api
