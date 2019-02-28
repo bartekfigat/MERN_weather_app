@@ -13,7 +13,7 @@ class Images extends Component {
     fetch("/test")
       .then(res => res.json())
       .then(images =>
-        this.setState({ images: images.newPost.displayImages }, () =>
+        this.setState({ images: images.newCreatedWeather }, () =>
           console.log(images)
         )
       );

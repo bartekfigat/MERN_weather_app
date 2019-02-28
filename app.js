@@ -11,12 +11,14 @@ const indexRoutes = require("./routes/api_back_end/index");
 const app = express();
 
 // Body parser middleware
-// Use Routes
+
 app
-  .use(bodyParser.urlencoded({ extended: false }))
+  .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
-  .use(morgan("tiny"))
-  .use(indexRoutes);
+  .use(morgan("tiny"));
+
+// Use Routes
+app.use(indexRoutes);
 
 //DB connect
 db.dbConnection();

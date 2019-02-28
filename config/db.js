@@ -5,6 +5,7 @@ module.exports = {
   dbConnection: () => {
     const db =
       process.env.DB_PASSWOR || "mongodb://localhost:27017/mern_weather_app";
+    mongoose.Promise = global.Promise;
     mongoose
       .connect(db, { useNewUrlParser: true })
       .then(() => {
