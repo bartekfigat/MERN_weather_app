@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 
 module.exports = {
   dbConnection: () => {
-    const db =
-      process.env.DB_PASSWOR || "mongodb://localhost:27017/mern_weather_app";
+    const db = process.env.DB_PASSWOR;
     mongoose.Promise = global.Promise;
     mongoose
       .connect(db, { useNewUrlParser: true })
@@ -12,13 +11,7 @@ module.exports = {
         console.log("mongoDB connected");
       })
       .catch(err => {
-        console.error(
-          `message: ${err.message}  
-   codeN:${err.codeName} 
-   codeNumber:${err.code} 
-   errName:${err.name}
-  `
-        );
+        console.error(err);
       });
   }
 };

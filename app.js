@@ -2,7 +2,7 @@ require("dotenv").config({ path: ".env" });
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const db = require("./config/db");
+const db = require("./configDB/db");
 
 //Routes require
 const indexRoutes = require("./routes/api_back_end/index");
@@ -12,10 +12,9 @@ const app = express();
 
 // Body parser middleware
 
-app
-  .use(bodyParser.urlencoded({ extended: true }))
-  .use(bodyParser.json())
-  .use(morgan("tiny"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(morgan("tiny"));
 
 // Use Routes
 app.use(indexRoutes);
