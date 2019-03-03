@@ -37,15 +37,19 @@ export default class images extends Component {
   handleDataFetch2 = () => {
     const options = {
       method: "GET",
-      mode: "no-cors",
+      // mode: "no-cors",
       cache: "default"
     };
 
-    const request = new Request("http://localhost:8080/index", options);
+    const request = new Request(API, options);
 
     fetch(request)
       .then(function(response) {
         return response;
+      })
+      .then(response => {
+        console.log(response);
+        response.json();
       })
       .then(function(response) {
         console.log(response);
@@ -53,9 +57,7 @@ export default class images extends Component {
   };
 
   handleDataFetch = () => {
-    fetch(API, {
-      mode: "no-cors"
-    })
+    fetch(API)
       .then(response => {
         // console.log(response);
 
