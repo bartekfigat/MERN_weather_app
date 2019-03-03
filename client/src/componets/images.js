@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 const axios = require("axios");
 
-const API = "http://localhost:8080/index";
+// const API = "http://localhost:8080/index";
+const API = "/index";
 
 export default class images extends Component {
   constructor() {
@@ -13,8 +14,8 @@ export default class images extends Component {
 
   componentDidMount() {
     // this.handleDataFetch();
-    this.handleDataFetch2();
-    // this.axiosFetch();
+    // this.handleDataFetch2();
+    this.axiosFetch();
   }
 
   axiosFetch = () => {
@@ -56,7 +57,7 @@ export default class images extends Component {
       mode: "no-cors"
     })
       .then(response => {
-        console.log(response);
+        // console.log(response);
 
         if (response.ok) {
           return response;
@@ -65,18 +66,17 @@ export default class images extends Component {
         throw Error("Error!!!!!!!!" + response);
       })
       .then(response => {
+        console.log(response);
         response.json();
       })
       .then(response => {
-        this.setState({
-          images: response
-        });
-      }, console.log(images))
+        console.log(response);
+      })
       .catch(error => console.log(error));
   };
 
   render() {
-    console.log(this.state.images);
+    // console.log(this.state.images);
     return <div>images</div>;
   }
 }

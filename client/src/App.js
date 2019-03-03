@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./bootstrap.min.css";
 import Images from "./componets/images";
 
 class App extends Component {
