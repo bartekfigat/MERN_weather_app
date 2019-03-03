@@ -41,7 +41,15 @@ export default class Navbar extends Component {
   };
 
   navbarHandler = () => {
-    console.log("hello from nav");
+    this.state.navbarOpen
+      ? this.setState({
+          navbarOpen: false,
+          nacCollapse: "collapse navbar-collapse"
+        })
+      : this.setState({
+          navbarOpen: true,
+          nacCollapse: "collapse navbar-collapse show"
+        });
   };
 
   render() {
@@ -62,7 +70,10 @@ export default class Navbar extends Component {
             {this.state.links.map(link => {
               return (
                 <li key={link.id} className="nav-item">
-                  <Link to={link.path} className=" nav-link text-capitalize">
+                  <Link
+                    to={link.path}
+                    className=" nav-link text-success text-capitalize"
+                  >
                     {link.text}
                   </Link>
                 </li>

@@ -13,17 +13,12 @@ export default class images extends Component {
   }
 
   componentDidMount() {
-    // this.handleDataFetch();
-    // this.handleDataFetch2();
-    this.axiosFetch();
-  }
-
-  axiosFetch = () => {
     axios
       .get(API)
       .then(function(response) {
         // handle success
-        console.log(response);
+        const images = response.data;
+        this.setState({ images });
       })
       .catch(function(error) {
         // handle error
@@ -32,7 +27,7 @@ export default class images extends Component {
       .then(function() {
         // always executed
       });
-  };
+  }
 
   handleDataFetch2 = () => {
     const options = {
@@ -77,8 +72,10 @@ export default class images extends Component {
       .catch(error => console.log(error));
   };
 
+  component;
+
   render() {
-    // console.log(this.state.images);
+    console.log(this.state.images);
     return <div>images</div>;
   }
 }
