@@ -8,7 +8,6 @@ export default function Result({ data }) {
         {data.map(image => {
           return <Image key={image._id} image={image} />;
         })}
-        x
       </div>
     </div>
   );

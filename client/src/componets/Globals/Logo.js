@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Logo() {
   return (
-    <div className="text-dark">
+    <div className="text-dark ml-5">
       Weather
-      <span style={{ color: "grean" }}>Info</span>
+      <span style={{ color: "green" }}>Info</span>
     </div>
   );
 }
