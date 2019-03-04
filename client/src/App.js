@@ -12,25 +12,25 @@ const axios = require("axios");
 const API = "/index";
 
 class App extends Component {
-  state = {
-    images: []
-  };
+  // state = {
+  //   images: []
+  // };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      images: []
+    };
+  }
 
   componentDidMount() {
     axios
       .get(API)
-      .then(function(response) {
-        // handle success
-        const images = response.data;
-        // console.log(images);
-        this.setState({ images });
-      })
+      .then(images => this.setState({ images: images.data }))
       .catch(function(error) {
         // handle error
         console.log(error);
-      })
-      .then(function() {
-        // always executed
       });
   }
 
