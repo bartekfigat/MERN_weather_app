@@ -9,11 +9,13 @@ const clientID = process.env.clientId,
   appCode = process.env.appCode;
 module.exports = {
   weatherPost: (req, res) => {
-    const addCity = req.body.addCity;
+    const city = req.body.city;
+    console.log(req.body);
+    console.log(city);
     const urls = [
-      `https://api.unsplash.com/search/photos/?page=1&per_page=6&orientation=portrait&query=${addCity}&client_id=${clientID}`,
+      `https://api.unsplash.com/search/photos/?page=1&per_page=6&orientation=portrait&query=${city}&client_id=${clientID}`,
 
-      `https://weather.api.here.com/weather/1.0/report.json?app_id=${appId}&app_code=${appCode}&product=observation&name=${addCity}`
+      `https://weather.api.here.com/weather/1.0/report.json?app_id=${appId}&app_code=${appCode}&product=observation&name=${city}`
     ];
 
     //=====================================
@@ -39,7 +41,6 @@ module.exports = {
         const newWeather = {
           displayImages,
           temperature,
-          city,
           description,
           iconLink,
           city
