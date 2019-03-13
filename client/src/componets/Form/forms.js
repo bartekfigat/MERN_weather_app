@@ -21,7 +21,7 @@ class AddCity extends Component {
     console.log("dziala");
 
     axios
-      .post(`/weather`, this.state.city)
+      .post(`/weather`, { user })
       .then(res => {
         console.log(res);
         console.log(res.data);

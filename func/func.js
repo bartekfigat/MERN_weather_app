@@ -9,8 +9,9 @@ const clientID = process.env.clientId,
   appCode = process.env.appCode;
 module.exports = {
   weatherPost: (req, res) => {
-    const city = req.body.city;
+    const city = req.body.user.city;
     console.log(req.body);
+    console.log(req.body.user.city);
     console.log(city);
     const urls = [
       `https://api.unsplash.com/search/photos/?page=1&per_page=6&orientation=portrait&query=${city}&client_id=${clientID}`,
@@ -21,6 +22,8 @@ module.exports = {
     //=====================================
     Promise.all(urls.map(url => fetch(url).then(res => res.json()))).then(
       ([api_1, api_2]) => {
+        // console.log(api_2);
+
         const displayImages = [];
         for (let i = 0; i < api_1.results.length; i++) {
           displayImages.push(api_1.results[i].urls.small);
