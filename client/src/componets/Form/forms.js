@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class AddCity extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      city: ""
-    };
+  state = {
+    city: ""
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
   handleChange = e => {
+<<<<<<< HEAD
     let city = e.target.value;
+=======
+    console.log(e.target.value);
+    let city = e.target.value;
+
+>>>>>>> d133b3313fb6094b321d08b4dfb5cab7a5b374b7
     this.setState({ city });
   };
 
@@ -21,6 +22,10 @@ class AddCity extends Component {
     const user = {
       city: this.state.city
     };
+<<<<<<< HEAD
+=======
+    console.log("dziala");
+>>>>>>> d133b3313fb6094b321d08b4dfb5cab7a5b374b7
 
     axios
       .post(`/weather`, { user })
@@ -32,6 +37,7 @@ class AddCity extends Component {
         // handle error
         console.log(error);
       });
+    console.log("axios");
   };
 
   render() {
@@ -40,9 +46,23 @@ class AddCity extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             City:
-            <input type="text" name="city" onChange={this.handleChange} />
+            {/* <input
+              type="text"
+              name="city"
+              onChange={this.handleChange}
+              value={this.state.city}
+            /> */}
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value={this.state.city}
+              onChange={this.handleChange}
+            />
           </label>
-          <button type="submit">Add city:</button>
+          <button type="submit" onClick={this.handleSubmit}>
+            Add city:
+          </button>
         </form>
       </div>
     );
