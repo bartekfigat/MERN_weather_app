@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import Api from "./componets/cards/fetch";
 import AddCity from "./componets/Form/forms";
+import NewCard from "./componets/newCard/NewCard";
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
       <div className="App">
         <h1>Mern weather app </h1>
         <AddCity />
-        <Api />
+        <NewCard />
       </div>
     );
   }

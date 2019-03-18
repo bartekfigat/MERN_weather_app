@@ -12,7 +12,8 @@ class AddCity extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange = e => {
-    this.setState({ city: e.target.vaule });
+    let city = e.target.value;
+    this.setState({ city });
   };
 
   handleSubmit = e => {
@@ -20,6 +21,7 @@ class AddCity extends Component {
     const user = {
       city: this.state.city
     };
+
     axios
       .post(`/weather`, { user })
       .then(res => {
