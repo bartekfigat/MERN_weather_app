@@ -7,13 +7,7 @@ class AddCity extends Component {
   };
 
   handleChange = e => {
-<<<<<<< HEAD
     let city = e.target.value;
-=======
-    console.log(e.target.value);
-    let city = e.target.value;
-
->>>>>>> d133b3313fb6094b321d08b4dfb5cab7a5b374b7
     this.setState({ city });
   };
 
@@ -22,10 +16,6 @@ class AddCity extends Component {
     const user = {
       city: this.state.city
     };
-<<<<<<< HEAD
-=======
-    console.log("dziala");
->>>>>>> d133b3313fb6094b321d08b4dfb5cab7a5b374b7
 
     axios
       .post(`/weather`, { user })

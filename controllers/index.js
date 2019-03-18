@@ -79,7 +79,6 @@ module.exports = {
         WeatherPost.create(newWeather)
           .then(newCreatedWeather => {
             res.json(newCreatedWeather);
-            console.log(newCreatedWeather);
           })
           .catch(err => {
             res.status(404).json({ notfound: "No post found(weather)" });
