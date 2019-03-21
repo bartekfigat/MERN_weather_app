@@ -3,21 +3,22 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class AppID extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    console.log(props);
+    super(props);
     this.state = {
-      data: []
+      item: []
     };
   }
 
   componentDidMount() {
-    // const { id } = this.props.match.params;
+    const id = this.props.match.params.id;
 
     axios
-      .get(`/index/:id`)
+      .get(`/index/${id}`)
       .then(res => {
-        console.log(res.data);
-        this.setState({ data: res.data });
+        const item = res.data;
+        this.setState({ item }, console.log(item));
       })
       .catch(error => {
         // handle error
@@ -26,10 +27,9 @@ class AppID extends Component {
   }
 
   render() {
-    // const { data } = this.state;
     return (
       <div>
-        <h1>Post id</h1>
+        <h1>Post id:${this.props.match.params.id}</h1>
       </div>
     );
   }

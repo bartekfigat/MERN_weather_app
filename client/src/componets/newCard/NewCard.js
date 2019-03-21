@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Router, Link } from "react-router-dom";
 import Spinner from "../spinner/Spinner";
 import {
   MDBRow,
@@ -87,10 +88,11 @@ class App extends Component {
                       {all.date}
                     </Moment>
                   </p>
-
-                  <MDBBtn color="primary" size="md">
-                    Read More
-                  </MDBBtn>
+                  <Link to={`/index/${all._id}`}>
+                    <MDBBtn color="primary" size="md">
+                      Read More
+                    </MDBBtn>
+                  </Link>
                 </MDBCol>
               </MDBRow>
             </MDBCardBody>
