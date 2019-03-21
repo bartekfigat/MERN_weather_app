@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-
 import axios from "axios";
+
+import Post from "./Post";
 
 class AppID extends Component {
   constructor(props) {
     console.log(props);
     super(props);
     this.state = {
-      item: []
+      item: {}
     };
   }
 
@@ -18,7 +19,7 @@ class AppID extends Component {
       .get(`/index/${id}`)
       .then(res => {
         const item = res.data;
-        this.setState({ item }, console.log(item));
+        this.setState({ item });
       })
       .catch(error => {
         // handle error
@@ -27,9 +28,12 @@ class AppID extends Component {
   }
 
   render() {
+    const { item } = this.state;
+
     return (
       <div>
         <h1>Post id:${this.props.match.params.id}</h1>
+        <Post post={item} />
       </div>
     );
   }
