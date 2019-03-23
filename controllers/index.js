@@ -2,7 +2,14 @@ require("dotenv").config({ path: ".env" });
 const express = require("express"),
   WeatherPost = require("../models/weather");
 const fetch = require("node-fetch");
-const moment = require("moment");
+
+// WeatherPost.find({}, { city: 1, temperature: 1, _id: 0 })
+//   .then(allData => {
+//     console.log(allData);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
 //===keys===
 const clientID = process.env.clientId,
@@ -11,6 +18,7 @@ const clientID = process.env.clientId,
 module.exports = {
   weatherGet: (req, res) => {
     WeatherPost.find()
+      .limit(3)
       .then(postsWeather => res.json(postsWeather))
       .catch(err =>
         res

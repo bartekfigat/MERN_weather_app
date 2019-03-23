@@ -1,15 +1,8 @@
 import React, { Component } from "react";
-import { Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Spinner from "../spinner/Spinner";
-import {
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBMask,
-  MDBView,
-  MDBBtn
-} from "mdbreact";
+
+import { Button, Row, Card, Container, Col, Jumbotron } from "react-bootstrap";
 import Moment from "react-moment";
 
 import axios from "axios";
@@ -47,60 +40,34 @@ class App extends Component {
       return <Spinner />;
     } else {
       return (
-        <MDBCard className="my-5 px-5 pb-5">
-          {data.map((all, i) => (
-            <MDBCardBody key={i}>
-              <MDBRow>
-                <MDBCol lg="5" xl="4">
-                  <MDBView
-                    hover
-                    className="rounded z-depth-1-half mb-lg-0 mb-4"
-                  >
-                    <img
-                      className="img-fluid"
-                      src={all.displayImages}
-                      alt="img"
-                    />
-                    <a href="#!">
-                      <MDBMask overlay="white-slight" />
-                    </a>
-                  </MDBView>
-                </MDBCol>
-                <MDBCol lg="7" xl="8">
-                  <h3 className="font-weight-bold mb-3 p-0">
-                    <p className="h1-responsive font-weight-bold text-center my-5">
-                      {all.city}
-                    </p>
-                    <strong>{all.description}</strong>
-                  </h3>
-
-                  <p className="dark-grey-text">
-                    {all.info},{all.temperature},
-                    <img src={all.iconLink} alt="img" />
-                  </p>
-                  <p>
-                    by{" "}
-                    <a href="#!" className="font-weight-bold">
-                      Jessica Clark
-                    </a>
-                    ,{" "}
-                    <Moment fromNow ago>
-                      {all.date}
-                    </Moment>
-                  </p>
-                  <Link to={`/index/${all._id}`}>
-                    <MDBBtn color="primary" size="md">
-                      Read More
-                    </MDBBtn>
-                  </Link>
-                </MDBCol>
-              </MDBRow>
-            </MDBCardBody>
-          ))}
-        </MDBCard>
+        <Jumbotron>
+          <Container className="d-flex flex-column">
+            <Row className="justify-content-md-center">
+              {data.map((all, i) => (
+                <Col xs={6} md={4}>
+                  <Card key={i} style={{ width: "18rem" }}>
+                    <Card.Img variant="top" src={all.displayImages} alt="img" />
+                    <Card.Body>
+                      <Card.Title>{all.city}</Card.Title>
+                      <Card.Text>
+                        <img src={all.iconLink} alt="" />
+                        {all.desription}
+                        <Moment fromNow ago>
+                          {all.date}
+                        </Moment>
+                      </Card.Text>
+                      <Link to={`/index/${all._id}`}>
+                        <Button variant="primary">Primary</Button>
+                      </Link>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </Jumbotron>
       );
     }
   }
 }
-
 export default App;

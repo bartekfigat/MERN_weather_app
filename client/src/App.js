@@ -11,14 +11,12 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Switch>
-            <Route path="/index/:id" component={AppID} />
-            <Link exact to="/">
-              Mern weather app{" "}
-            </Link>
-          </Switch>
           <AddCity />
-          <NewCard />
+          <Link to="/">Mern weather app</Link>
+          <Switch>
+            <Route exact path="/" component={NewCard} />
+            <Route path="/index/:id" component={AppID} />
+          </Switch>
         </div>
       </Router>
     );
