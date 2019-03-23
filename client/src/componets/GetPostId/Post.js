@@ -16,8 +16,20 @@ const Post = function Post({ post, link }) {
     <MDBCardBody>
       <MDBRow>
         <MDBCol lg="5" xl="4">
+<<<<<<< HEAD
           <MDBView hover className="rounded z-depth-1-half mb-lg-0 mb-4">
             <img className="img-fluid" src={post.displayImages} alt="img" />
+=======
+          <MDBView
+            hover
+            className="rounded z-depth-1-half mb-lg-0 mb-4"
+          >
+            <img
+              className="img-fluid"
+              src={post.displayImages}
+              alt="img"
+            />
+>>>>>>> 960f0276456fb3c68ffe2e1bf957182f2f8d8623
             <a href="#!">
               <MDBMask overlay="white-slight" />
             </a>
@@ -45,17 +57,29 @@ const Post = function Post({ post, link }) {
               {post.date}
             </Moment>
           </p>
+<<<<<<< HEAD
           {link && (
+=======
+          {link &&
+>>>>>>> 960f0276456fb3c68ffe2e1bf957182f2f8d8623
             <Link to={`/index/${post._id}`}>
               <MDBBtn color="primary" size="md">
                 Read More
               </MDBBtn>
             </Link>
+<<<<<<< HEAD
           )}
+=======
+          }
+>>>>>>> 960f0276456fb3c68ffe2e1bf957182f2f8d8623
         </MDBCol>
       </MDBRow>
     </MDBCardBody>
   );
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> 960f0276456fb3c68ffe2e1bf957182f2f8d8623
 
 export default Post;

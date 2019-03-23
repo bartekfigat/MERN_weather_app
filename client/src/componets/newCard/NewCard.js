@@ -1,11 +1,19 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import Spinner from "../spinner/Spinner";
 
 import { Button, Row, Card, Container, Col, Jumbotron } from "react-bootstrap";
 import Moment from "react-moment";
-
+=======
 import axios from "axios";
+import {
+  MDBCard,
+} from "mdbreact";
+>>>>>>> 960f0276456fb3c68ffe2e1bf957182f2f8d8623
+
+import Spinner from "../spinner/Spinner";
+import Post from "../GetPostId/Post";
 
 const back_end_api = "/index";
 
@@ -40,6 +48,7 @@ class App extends Component {
       return <Spinner />;
     } else {
       return (
+<<<<<<< HEAD
         <Jumbotron>
           <Container className="d-flex flex-column">
             <Row className="justify-content-md-center">
@@ -66,6 +75,11 @@ class App extends Component {
             </Row>
           </Container>
         </Jumbotron>
+=======
+        <MDBCard className="my-5 px-5 pb-5">
+          {data.map((all, i) => <Post post={all} link key={`post-${i}`} />)}
+        </MDBCard>
+>>>>>>> 960f0276456fb3c68ffe2e1bf957182f2f8d8623
       );
     }
   }
