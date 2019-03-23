@@ -3,8 +3,6 @@ import { Row, Container, Col } from "react-bootstrap";
 import Spinner from "../spinner/Spinner";
 import axios from "axios";
 
-import Post from "./Post";
-
 class AppID extends Component {
   constructor(props) {
     console.log(props);
