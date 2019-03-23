@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { Row, Container, Col } from "react-bootstrap";
 import Spinner from "../spinner/Spinner";
 import axios from "axios";
