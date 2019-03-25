@@ -1,6 +1,5 @@
 require("dotenv").config({ path: ".env" });
 const express = require("express");
-const validator = require("../../validator/index");
 const weatherFunc = require("../../controllers/index");
 
 router = express.Router();

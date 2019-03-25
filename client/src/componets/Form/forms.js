@@ -32,6 +32,7 @@ class AddCity extends Component {
         city: this.state.city
       };
       this.setState(defaultSatte);
+      // this.props.history.push("/");
 
       axios
         .post(`/weather`, { user })
