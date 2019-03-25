@@ -19,7 +19,9 @@ class App extends Component {
     axios
       .get(back_end_api)
       .then(res => {
+        console.log(res);
         console.log(res.data);
+        console.log(res.err);
         this.setState({ data: res.data });
       })
       .catch(error => {

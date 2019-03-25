@@ -4,14 +4,12 @@ const mongoose = require("mongoose");
 
 const WeatherPost = new mongoose.Schema({
   temperature: String,
-  city: String,
+  city: { type: String, required: true },
   description: String,
   iconLink: String,
   info: String,
   displayImages: {
-    type: Array,
-    default:
-      "https://images.unsplash.com/photo-1533035353720-f1c6a75cd8ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+    type: Array
   },
   date: { type: Date, default: Date.now }
 });

@@ -1,19 +1,14 @@
 require("dotenv").config({ path: ".env" });
 const express = require("express");
+const validator = require("../../validator/index");
 const weatherFunc = require("../../controllers/index");
 
 router = express.Router();
 
-router.get("/index", (req, res) => {
-  weatherFunc.weatherGet(req, res);
-});
+router.get("/index", weatherFunc.weatherGet);
 
-router.get("/index/:id", (req, res) => {
-  weatherFunc.weatherGetId(req, res);
-});
+router.get("/index/:id", weatherFunc.weatherGetId);
 
-router.post("/weather", (req, res) => {
-  weatherFunc.weatherPost(req, res);
-});
+router.post("/weather", weatherFunc.weatherPost);
 
 module.exports = router;

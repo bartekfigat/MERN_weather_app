@@ -2,6 +2,7 @@ require("dotenv").config({ path: ".env" });
 const express = require("express"),
   WeatherPost = require("../models/weather");
 const fetch = require("node-fetch");
+// const { check } = require("express-validator/check");
 
 // WeatherPost.find({}, { city: 1, temperature: 1, _id: 0 })
 //   .then(allData => {
@@ -18,17 +19,16 @@ const clientID = process.env.clientId,
 module.exports = {
   weatherGet: (req, res) => {
     WeatherPost.find()
-      .limit(3)
-      .then(postsWeather => res.json(postsWeather))
+      .limit()
+      .then(postsWeather => res.status(200).json(postsWeather))
       .catch(err =>
-        res
-          .status(404)
-          .json({ nopostsfound: "No posts found" }, console.log(err))
+        res.status(500).json(err, { err: err }, console.log(err.msg))
       );
   },
 
   weatherGetId: (req, res) => {
     const postID = req.params.id;
+
     WeatherPost.findById(postID)
       .then(postsWeather => res.json(postsWeather))
       .catch(err =>
@@ -40,6 +40,10 @@ module.exports = {
 
   weatherPost: (req, res) => {
     const city = req.body.user.city;
+
+    // if (!req.body.user.city) {
+    //   res.status(500).json({ err: "empty" });
+    // }
     const urls = [
       `https://api.unsplash.com/search/photos/?page=1&per_page=6&orientation=portrait&query=${city}&client_id=${clientID}`,
 

@@ -36,7 +36,7 @@ class AppID extends Component {
   // <p>{this.renderdesription(desription ? desription : [])}</p>
 
   render() {
-    const { id } = this.props.match.params;
+    // const { id } = this.props.match.params;
 
     const {
       info,
@@ -51,7 +51,7 @@ class AppID extends Component {
       return <Spinner />;
     } else {
       return (
-        <Container key={_id} className=" flex-column">
+        <Container key={this.props.id} className=" flex-column">
           <h1>{city}</h1>
           <h1>{temperature}</h1>
           <h1>
