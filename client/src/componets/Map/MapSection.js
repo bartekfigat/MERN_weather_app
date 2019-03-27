@@ -14,19 +14,15 @@ export class MapSection extends Component {
     return (
       <div>
         <Map
-          style="mapbox://styles/mapbox/streets-v9"
+          style={mapStyle}
           containerStyle={{
             height: "40vh",
             width: "40vw"
           }}
-          center={[19.8546732, 50.1486687]}
+          center={[19.855571, 50.1486687]}
           zoom={[15]}
         >
-          <Layer
-            type="symbol"
-            id="marker"
-            layout={{ "icon-image": "marker-15" }}
-          >
+          <Layer type="symbol" id="marker" layout={layCont}>
             <Feature coordinates={[19.855571, 50.1486887]} />
           </Layer>
         </Map>
