@@ -22,4 +22,5 @@ export class MapSection extends Component {
     );
   }
 }
+
 export default MapSection;
