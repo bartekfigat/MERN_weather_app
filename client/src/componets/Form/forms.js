@@ -4,7 +4,8 @@ import { Form, Row, Col, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 const defaultSatte = {
   city: "",
-  inputError: ""
+  inputError: "",
+  success: ""
 };
 class AddCity extends Component {
   state = { defaultSatte };
@@ -15,8 +16,9 @@ class AddCity extends Component {
   };
   validate = () => {
     let inputError = "";
+
     if (!this.state.city) {
-      inputError = "add city";
+      inputError = "enter the city";
     }
     if (inputError) {
       this.setState({ inputError });
@@ -24,6 +26,7 @@ class AddCity extends Component {
     }
     return true;
   };
+
   handleSubmit = e => {
     e.preventDefault();
     const isValid = this.validate();
@@ -55,7 +58,7 @@ class AddCity extends Component {
           <Row>
             <Col>
               {this.state.inputError ? (
-                <Alert variant="danger">Please enter the city </Alert>
+                <Alert variant="danger">Please {this.state.inputError} </Alert>
               ) : null}
               <Form.Group>
                 <Form.Label>Yor city</Form.Label>

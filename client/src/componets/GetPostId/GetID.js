@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import { Row, Container, Col } from "react-bootstrap";
+import { Row, Container, Col, Button } from "react-bootstrap";
+import MapSection from "../Map/MapSection";
 import Spinner from "../spinner/Spinner";
 import axios from "axios";
+import "./imgSlide.css";
+
+// {this.renderImages(displayImages ? displayImages : [])}
 
 class AppID extends Component {
   constructor(props) {
     console.log(props);
     super(props);
     this.state = {
-      data: []
+      data: [],
+      i: 0
     };
   }
 
@@ -40,26 +45,65 @@ class AppID extends Component {
 
     const {
       info,
-      _id,
       displayImages,
       city,
       temperature,
       iconLink
     } = this.state.data;
 
+    this.handelNextImg = () => {
+      const lastIndex = displayImages.length - 1;
+      const { i } = this.state;
+      const shouldResetIndex = i === 0;
+      const index = shouldResetIndex ? lastIndex : i - 1;
+      this.setState({
+        i: index
+      });
+    };
+
+    this.handelPrevImg = () => {
+      const lastIndex = displayImages.length - 1;
+      const { i } = this.state;
+      const shouldResetIndex = i === lastIndex;
+      const index = shouldResetIndex ? 0 : i + 1;
+      this.setState({
+        i: index
+      });
+    };
+
     if (!displayImages || displayImages === null) {
       return <Spinner />;
     } else {
       return (
         <Container key={this.props.id} className=" flex-column">
+          <MapSection />
           <h1>{city}</h1>
           <h1>{temperature}</h1>
           <h1>
             <img src={iconLink} alt="" />
           </h1>
-          <Row>
+          <Row className="imgSlideShow">
             <Col xs={8} md={6}>
-              {this.renderImages(displayImages ? displayImages : [])}
+              <Button
+                onClick={() => this.handelNextImg()}
+                variant="outline-secondary"
+              >
+                Next
+              </Button>
+              <img
+                style={{
+                  width: "300px",
+                  height: "600px"
+                }}
+                src={displayImages[this.state.i]}
+                alt=""
+              />
+              <Button
+                onClick={() => this.handelPrevImg()}
+                variant="outline-secondary"
+              >
+                Prev
+              </Button>
             </Col>
             <Col md={4}>
               <h5>{info}</h5>
