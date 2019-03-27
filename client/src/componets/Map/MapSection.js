@@ -13,9 +13,17 @@ export class MapSection extends Component {
   render() {
     return (
       <div>
-        <Map style={{ mapStyle }} containerStyle={styleCont}>
+        <Map
+          style={mapStyle}
+          containerStyle={{
+            height: "40vh",
+            width: "40vw"
+          }}
+          center={[19.855571, 50.1486687]}
+          zoom={[15]}
+        >
           <Layer type="symbol" id="marker" layout={layCont}>
-            <Feature coordinates={coordinate} />
+            <Feature coordinates={[19.855571, 50.1486887]} />
           </Layer>
         </Map>
       </div>
