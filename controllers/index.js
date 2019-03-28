@@ -74,10 +74,19 @@ module.exports = {
           city: api_2.observations.location[0].city,
           description:
             api_2.observations.location[0].observation[0].description,
-          iconLink: api_2.observations.location[0].observation[0].iconLink
+          iconLink: api_2.observations.location[0].observation[0].iconLink,
+          lat: api_2.observations.location[0].observation[0].latitude,
+          long: api_2.observations.location[0].observation[0].longitude
         };
 
-        const { temperature, city, description, iconLink } = displayWeather;
+        const {
+          temperature,
+          city,
+          description,
+          iconLink,
+          lat,
+          long
+        } = displayWeather;
 
         const newWeather = {
           displayImages,
@@ -85,7 +94,9 @@ module.exports = {
           description,
           iconLink,
           info,
-          city
+          city,
+          lat,
+          long
         };
 
         WeatherPost.create(newWeather)

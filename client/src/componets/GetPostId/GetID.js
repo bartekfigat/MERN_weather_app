@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { Row, Container, Col, Button } from "react-bootstrap";
-import MapSection from "../Map/MapSection";
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import Spinner from "../spinner/Spinner";
 import axios from "axios";
 import "./imgSlide.css";
 
 // {this.renderImages(displayImages ? displayImages : [])}
+const Map = ReactMapboxGl({
+  accessToken:
+    "pk.eyJ1IjoiZW9hbiIsImEiOiJjanRpdXc3anQydGZuNDRsNjRva2ppc2xoIn0.2CqiJUJUSTh4RCNd66vV0A"
+});
 
 class AppID extends Component {
   constructor(props) {
@@ -42,14 +46,20 @@ class AppID extends Component {
 
   render() {
     // const { id } = this.props.match.params;
+    const mapStyle = `mapbox://styles/mapbox/streets-v9`;
+    const styleCont = { height: "100vh", width: "100vh" };
+    const layCont = { "icon-image": "marker-15" };
 
     const {
       info,
       displayImages,
       city,
       temperature,
-      iconLink
+      iconLink,
+      lat,
+      long
     } = this.state.data;
+    console.log(`${lat}===${long}`);
 
     this.handelNextImg = () => {
       const lastIndex = displayImages.length - 1;
@@ -76,7 +86,19 @@ class AppID extends Component {
     } else {
       return (
         <Container key={this.props.id} className=" flex-column">
-          <MapSection />
+          <Col md={8} xl={12}>
+            <Map
+              style={mapStyle}
+              containerStyle={styleCont}
+              center={[lat, long]}
+              zoom={[15]}
+            >
+              <Layer type="symbol" id="marker" layout={layCont}>
+                <Feature coordinates={[lat, long]} />
+              </Layer>
+            </Map>
+          </Col>
+
           <h1>{city}</h1>
           <h1>{temperature}</h1>
           <h1>
