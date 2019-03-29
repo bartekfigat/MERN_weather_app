@@ -75,8 +75,10 @@ module.exports = {
           description:
             api_2.observations.location[0].observation[0].description,
           iconLink: api_2.observations.location[0].observation[0].iconLink,
-          lat: api_2.observations.location[0].observation[0].latitude,
-          long: api_2.observations.location[0].observation[0].longitude
+          lat: parseInt(api_2.observations.location[0].observation[0].latitude),
+          long: parseInt(
+            api_2.observations.location[0].observation[0].longitude
+          )
         };
 
         const {

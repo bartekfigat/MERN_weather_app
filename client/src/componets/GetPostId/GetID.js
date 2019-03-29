@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Container, Col, Button } from "react-bootstrap";
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import ReactMapboxGl, { Popup } from "react-mapbox-gl";
 import Spinner from "../spinner/Spinner";
 import axios from "axios";
 import "./imgSlide.css";
@@ -59,7 +59,6 @@ class AppID extends Component {
       lat,
       long
     } = this.state.data;
-    console.log(`${lat}===${long}`);
 
     this.handelNextImg = () => {
       const lastIndex = displayImages.length - 1;
@@ -91,11 +90,18 @@ class AppID extends Component {
               style={mapStyle}
               containerStyle={styleCont}
               center={[lat, long]}
-              zoom={[15]}
+              zoom={[5]}
             >
-              <Layer type="symbol" id="marker" layout={layCont}>
-                <Feature coordinates={[lat, long]} />
-              </Layer>
+              <Popup
+                coordinates={[lat, long]}
+                offset={{
+                  "bottom-left": [12, -38],
+                  bottom: [0, -38],
+                  "bottom-right": [-12, -38]
+                }}
+              >
+                <h1>{city}</h1>
+              </Popup>
             </Map>
           </Col>
 
