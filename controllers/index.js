@@ -1,6 +1,5 @@
 require("dotenv").config({ path: ".env" });
-const express = require("express"),
-  WeatherPost = require("../models/weather");
+const WeatherPost = require("../models/weather");
 const fetch = require("node-fetch");
 // const { check } = require("express-validator/check");
 
