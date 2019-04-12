@@ -16,12 +16,8 @@ class LandingPage extends Component {
 
           <nav className="main_nav">
             <ul className="list">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/form">Add Post</a>
-              </li>
+              <Link to="/">Home</Link>
+              <Link to="/form">Add Post</Link>
             </ul>
           </nav>
         </header>
