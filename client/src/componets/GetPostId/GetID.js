@@ -47,7 +47,13 @@ class AppID extends Component {
   render() {
     // const { id } = this.props.match.params;
     const mapStyle = `mapbox://styles/mapbox/streets-v9`;
-    const styleCont = { height: "100vh", width: "100vh" };
+    const styleCont = {
+      height: "100vh",
+      width: "100vh",
+      margin: "0",
+      padding: "0",
+      borderRadius: "20px"
+    };
     const layCont = { "icon-image": "marker-15" };
 
     const {
@@ -85,7 +91,7 @@ class AppID extends Component {
     } else {
       return (
         <Container key={this.props.id} className=" flex-column">
-          <Col md={8} xl={12}>
+          <div className="classMap">
             <Map
               style={mapStyle}
               containerStyle={styleCont}
@@ -103,7 +109,7 @@ class AppID extends Component {
                 <h1>{city}</h1>
               </Popup>
             </Map>
-          </Col>
+          </div>
 
           <h1>{city}</h1>
           <h1>{temperature}</h1>

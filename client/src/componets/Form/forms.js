@@ -1,19 +1,24 @@
 import React, { Component } from "react";
+
 import { Form, Row, Col, Button, Alert } from "react-bootstrap";
 
 import axios from "axios";
 const defaultSatte = {
   city: "",
-  inputError: "",
-  success: ""
+  inputError: ""
 };
 class AddCity extends Component {
-  state = { defaultSatte };
+  constructor(props) {
+    super(props);
+    console.log(props.history);
+    this.state = { defaultSatte };
+  }
 
   handleChange = e => {
     let city = e.target.value;
     this.setState({ city });
   };
+
   validate = () => {
     let inputError = "";
 
@@ -35,18 +40,15 @@ class AddCity extends Component {
         city: this.state.city
       };
       this.setState(defaultSatte);
-      // this.props.history.push("/");
 
       axios
         .post(`/weather`, { user })
         .then(res => {
-          console.log(res);
-          console.log(res.data);
+          this.props.history.push("/");
         })
         .catch(error => {
           // handle error
-          let erro = this.setState.err;
-          console.log(error, { err: erro });
+          console.log(error, { err: error });
         });
     }
   };
@@ -69,10 +71,12 @@ class AddCity extends Component {
                   onChange={this.handleChange}
                   placeholder="Enter city"
                 />
+
                 <Button
                   variant="secondary"
                   type="submit"
                   onClick={this.handleSubmit}
+                  history={this.props.history}
                 >
                   Add city:
                 </Button>

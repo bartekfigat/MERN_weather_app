@@ -4,6 +4,7 @@ import Spinner from "../spinner/Spinner";
 import axios from "axios";
 import { Button, Row, Card, Container, Col, Jumbotron } from "react-bootstrap";
 import Moment from "react-moment";
+import "./NewCard.css";
 
 const back_end_api = "/index";
 

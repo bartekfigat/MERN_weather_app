@@ -1,7 +1,6 @@
 require("dotenv").config({ path: ".env" });
 const WeatherPost = require("../models/weather");
 const fetch = require("node-fetch");
-// const { check } = require("express-validator/check");
 
 // WeatherPost.find({}, { city: 1, temperature: 1, _id: 0 })
 //   .then(allData => {
@@ -64,7 +63,6 @@ module.exports = {
         };
 
         const { info } = wiki;
-        console.log(info);
 
         const displayWeather = {
           temperature: Math.round(
