@@ -4,6 +4,7 @@ const expressValidator = require("express-validator");
 const expressSession = require("express-session");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 const db = require("./configDB/db");
 
 //Routes require
@@ -16,6 +17,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+mongoose.set("useFindAndModify", false);
 app.use(
   expressSession({
     secret: "verySecret",
