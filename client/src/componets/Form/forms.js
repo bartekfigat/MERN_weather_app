@@ -5,7 +5,8 @@ import { Form, Row, Col, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 const defaultSatte = {
   city: "",
-  inputError: ""
+  inputError: "",
+  successMessage: ""
 };
 class AddCity extends Component {
   constructor(props) {
@@ -40,11 +41,13 @@ class AddCity extends Component {
         city: this.state.city
       };
       this.setState(defaultSatte);
+      this.setState({ successMessage: "success" });
 
       axios
         .post(`/weather`, { user })
         .then(res => {
-          this.props.history.push("/");
+          const id = res.data._id;
+          this.props.history.push(`/index/${id}`);
         })
         .catch(error => {
           // handle error
@@ -61,6 +64,12 @@ class AddCity extends Component {
             <Col>
               {this.state.inputError ? (
                 <Alert variant="danger">Please {this.state.inputError} </Alert>
+              ) : null}
+
+              {this.state.successMessage === "success" ? (
+                <Alert variant="success">
+                  You have successfully added {this.state.city}
+                </Alert>
               ) : null}
               <Form.Group>
                 <Form.Label>Yor city</Form.Label>

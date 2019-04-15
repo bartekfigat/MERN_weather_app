@@ -54,7 +54,6 @@ class AppID extends Component {
       padding: "0",
       borderRadius: "20px"
     };
-    const layCont = { "icon-image": "marker-15" };
 
     const {
       info,

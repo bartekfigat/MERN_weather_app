@@ -20,9 +20,7 @@ class App extends Component {
     axios
       .get(back_end_api)
       .then(res => {
-        console.log(res);
         console.log(res.data);
-        console.log(res.err);
         this.setState({ data: res.data });
       })
       .catch(error => {
@@ -45,11 +43,15 @@ class App extends Component {
           <Container className="d-flex flex-column">
             <Row className="justify-content-md-center">
               {data.map((all, i) => (
-                <Col xs={6} md={4}>
-                  <Card key={i} style={{ width: "18rem" }}>
+                <Col xs={6} md={4} key={i}>
+                  <Card style={{ width: "18rem" }}>
                     <Card.Img variant="top" src={all.displayImages} alt="img" />
                     <Card.Body>
                       <Card.Title>{all.city}</Card.Title>
+                      <Card.Text>
+                        <i className="far fa-eye" />
+                        {all.views}
+                      </Card.Text>
                       <Card.Text>
                         <img src={all.iconLink} alt="" />
                         {all.desription}

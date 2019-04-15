@@ -2,7 +2,10 @@ require("dotenv").config({ path: ".env" });
 const WeatherPost = require("../models/weather");
 const fetch = require("node-fetch");
 
-// WeatherPost.find({}, { city: 1, temperature: 1, _id: 0 })
+// WeatherPost.findByIdAndUpdate(
+//   { _id: "5cb2af461c288d605089b1d7" },
+//   { $inc: { views: 1 } }
+// )
 //   .then(allData => {
 //     console.log(allData);
 //   })
@@ -25,10 +28,19 @@ module.exports = {
   },
 
   weatherGetId: (req, res) => {
-    const postID = req.params.id;
+    const id = req.params.id;
 
-    WeatherPost.findById(postID)
-      .then(postsWeather => res.json(postsWeather))
+    WeatherPost.findById(id)
+      .then(
+        postsWeather => res.json(postsWeather),
+        WeatherPost.findByIdAndUpdate(
+          { _id: id },
+          { $inc: { views: 1 } },
+          (e, a) => {
+            console.log(`views count: ${a.views}`);
+          }
+        )
+      )
       .catch(err =>
         res
           .status(404)

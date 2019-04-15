@@ -12,6 +12,7 @@ const WeatherPost = new mongoose.Schema({
     type: Array
   },
   date: { type: Date, default: Date.now },
+  views: { type: Number, default: 0 },
   lat: Number,
   long: Number
 });

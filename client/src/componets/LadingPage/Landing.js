@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
-import background from "../../img/background.svg";
 import "./Landing.css";
 
 class LandingPage extends Component {
@@ -11,7 +10,6 @@ class LandingPage extends Component {
         <header className="main-header">
           <Link to="/" className="brand-logo">
             <img src={logo} alt="logo" />
-            <div className="brand-logo">Weather App</div>
           </Link>
 
           <nav className="main_nav">
