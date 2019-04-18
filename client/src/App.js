@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { AnimatedSwitch } from "react-router-transition";
 
 import "./App.css";
 import Landing from "./componets/LadingPage/Landing";
@@ -13,11 +14,15 @@ class App extends Component {
       <Router>
         <div className="App">
           <Landing />
-          <Switch>
+          <AnimatedSwitch
+            atEnter={{ opacity: 0 }}
+            atLeave={{ opacity: 0 }}
+            atActive={{ opacity: 1 }}
+          >
             <Route exact path="/form" component={AddCity} />
             <Route exact path="/" component={NewCard} />
             <Route path="/index/:id" component={AppID} />
-          </Switch>
+          </AnimatedSwitch>
         </div>
       </Router>
     );

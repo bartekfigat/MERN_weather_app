@@ -138,8 +138,8 @@ class AppID extends Component {
                 Prev
               </Button>
             </Col>
-            <Col md={4}>
-              <h5>{info}</h5>
+            <Col className="container_info" md={4}>
+              <h5 className="info">{info}</h5>
             </Col>
           </Row>
         </Container>
