@@ -1,22 +1,17 @@
 require("dotenv").config({ path: ".env" });
 const WeatherPost = require("../models/weather");
 const fetch = require("node-fetch");
-
-// WeatherPost.findByIdAndUpdate(
-//   { _id: "5cb2af461c288d605089b1d7" },
-//   { $inc: { views: 1 } }
-// )
-//   .then(allData => {
-//     console.log(allData);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 
 //===keys===
+const geocodingClient = mbxGeocoding({
+  accessToken: process.env.map_Box_Token
+});
 const clientID = process.env.clientId,
   appId = process.env.appId,
   appCode = process.env.appCode;
+//=========================
+
 module.exports = {
   weatherGet: (req, res) => {
     WeatherPost.find()
@@ -90,35 +85,48 @@ module.exports = {
           )
         };
 
-        const {
-          temperature,
-          city,
-          description,
-          iconLink,
-          lat,
-          long
-        } = displayWeather;
+        const { temperature, city, description, iconLink } = displayWeather;
 
-        const newWeather = {
-          displayImages,
-          temperature,
-          description,
-          iconLink,
-          info,
-          city,
-          lat,
-          long
-        };
-
-        WeatherPost.create(newWeather)
-          .then(newCreatedWeather => {
-            res.json(newCreatedWeather);
+        geocodingClient
+          .forwardGeocode({
+            query: city,
+            limit: 1
           })
-          .catch(err => {
-            res.status(404).json({ notfound: "No post found(weather)" });
-            console.log(err);
+          .send()
+          .then(response => {
+            const match = response.body;
+            const coordinates = match.features[0].geometry.coordinates;
+            const newWeather = {
+              displayImages,
+              temperature,
+              description,
+              iconLink,
+              info,
+              city,
+              coordinates
+            };
+
+            WeatherPost.create(newWeather)
+              .then(newCreatedWeather => {
+                res.json(newCreatedWeather);
+              })
+              .catch(err => {
+                res.status(404).json({ notfound: "No post found(weather)" });
+                console.log(err);
+              });
           });
       }
     );
   }
 };
+
+// WeatherPost.findByIdAndUpdate(
+//   { _id: "5cb2af461c288d605089b1d7" },
+//   { $inc: { views: 1 } }
+// )
+//   .then(allData => {
+//     console.log(allData);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });

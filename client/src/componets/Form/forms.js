@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { Form, Row, Col, Button, Alert } from "react-bootstrap";
 
 import axios from "axios";
@@ -11,7 +10,7 @@ const defaultSatte = {
 class AddCity extends Component {
   constructor(props) {
     super(props);
-    console.log(props.history);
+
     this.state = { defaultSatte };
   }
 
@@ -59,6 +58,7 @@ class AddCity extends Component {
   render() {
     return (
       <div>
+        <h1>{this.props.allCitis}</h1>
         <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col>

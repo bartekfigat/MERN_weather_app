@@ -13,8 +13,7 @@ const WeatherPost = new mongoose.Schema({
   },
   date: { type: Date, default: Date.now },
   views: { type: Number, default: 0 },
-  lat: Number,
-  long: Number
+  coordinates: Array
 });
 
 module.exports = mongoose.model("Post", WeatherPost);

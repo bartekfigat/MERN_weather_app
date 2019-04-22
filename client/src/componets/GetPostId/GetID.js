@@ -61,8 +61,7 @@ class AppID extends Component {
       city,
       temperature,
       iconLink,
-      lat,
-      long
+      coordinates
     } = this.state.data;
 
     this.handelNextImg = () => {
@@ -94,11 +93,11 @@ class AppID extends Component {
             <Map
               style={mapStyle}
               containerStyle={styleCont}
-              center={[lat, long]}
+              center={coordinates}
               zoom={[5]}
             >
               <Popup
-                coordinates={[lat, long]}
+                coordinates={coordinates}
                 offset={{
                   "bottom-left": [12, -38],
                   bottom: [0, -38],
