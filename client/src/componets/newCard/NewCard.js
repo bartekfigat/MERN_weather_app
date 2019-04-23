@@ -10,7 +10,7 @@ import { fetchPosts } from "../../actions/postAction";
 import "./NewCard.css";
 
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchPosts();
   }
 

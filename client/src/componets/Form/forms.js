@@ -11,7 +11,7 @@ class AddCity extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { defaultSatte };
+    this.state = { city: "", inputError: "", successMessage: "" };
   }
 
   handleChange = e => {
@@ -42,6 +42,7 @@ class AddCity extends Component {
       this.setState(defaultSatte);
       this.setState({ successMessage: "success" });
 
+      //Call post============
       axios
         .post(`/weather`, { user })
         .then(res => {
@@ -52,6 +53,7 @@ class AddCity extends Component {
           // handle error
           console.log(error, { err: error });
         });
+      //=============
     }
   };
 
