@@ -1,6 +1,6 @@
 # MERN_weather_app
 
-This project is built based on such technologies as: Node.js, Express.js, MongoDB, React
+This project is built based on such technologies as: Node.js, Express.js, MongoDB, React, React-Redux
 
 # API
 1. HereMap  - allow us to look at the current weather.
